@@ -9,6 +9,7 @@ namespace C_crudweb.Datos
         public Conexion() { 
             
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
+            CadenaSQL = builder.GetSection("ConnectionStrings:CadenaSQL").Value;
         }
     }
 }
