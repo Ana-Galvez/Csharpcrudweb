@@ -11,5 +11,9 @@ namespace C_crudweb.Datos
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
             CadenaSQL = builder.GetSection("ConnectionStrings:CadenaSQL").Value;
         }
+
+        public string getCadenaSQL(){
+            return CadenaSQL;
+        }
     }
 }
