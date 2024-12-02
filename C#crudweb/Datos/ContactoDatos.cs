@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 using C_crudweb.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace C_crudweb.Datos
 {
@@ -33,6 +34,25 @@ namespace C_crudweb.Datos
             return objVerContactos;
         }
 
-
+        public ContactoModelo ListarContacto(int IdContacto)
+        {
+            var objContacto=new ContactoModelo();
+            var connect = new Conexion();
+            using (var conexion = new SqlConnection(connect.getCadenaSQL())) {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_verContacto", conexion);
+                cmd.Parameters.AddWithValue("IdContacto",IdContacto);
+                cmd.CommandType=CommandType.StoredProcedure;
+                using (var dr = cmd.ExecuteReader()) {
+                    while (dr.Read()) {
+                        objContacto.IdContacto = Convert.ToInt32(dr["IdContacto"]);
+                        objContacto.Nombre = dr["Nombre"].ToString();
+                        objContacto.Telefono = dr["Telefono"].ToString();
+                        objContacto.Correo = dr["Correo"].ToString();
+                    }
+                }
+            }
+            return objContacto;
+        }
     }
 }
