@@ -15,5 +15,7 @@ namespace C_crudweb.Datos
         public string getCadenaSQL(){
             return CadenaSQL;
         }
+
+
     }
 }
