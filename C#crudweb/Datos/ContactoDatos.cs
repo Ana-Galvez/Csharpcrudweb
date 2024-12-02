@@ -81,5 +81,56 @@ namespace C_crudweb.Datos
             }
             return respuesta;
         }
+
+        public bool EditarContacto(ContactoModelo objContacto)
+        {
+            bool respuesta;
+            try
+            {
+                var connect = new Conexion();
+                using(var conexion=new SqlConnection(connect.getCadenaSQL())){
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("sp_modificarContacto", conexion);
+                    cmd.Parameters.AddWithValue("IdContacto", objContacto.IdContacto);
+                    cmd.Parameters.AddWithValue("Nombre", objContacto.Nombre);
+                    cmd.Parameters.AddWithValue("Telefono", objContacto.Telefono);
+                    cmd.Parameters.AddWithValue("Correo", objContacto.Correo);
+                    cmd.CommandType= CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                respuesta=true;
+            }
+            catch (Exception e)
+            {
+                string msg=e.Message;
+                respuesta = false;
+               
+            }
+            return respuesta;
+        }
+
+        public bool BorrarContacto(int IdContacto)
+        {
+            bool respuesta;
+            try
+            {
+                var connect = new Conexion();
+                using (var conexion = new SqlConnection(connect.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("sp_eliminarContacto", conexion);
+                    cmd.Parameters.AddWithValue("IdContacto", IdContacto);
+                    cmd.CommandType= CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                respuesta = true;
+            }
+            catch (Exception e)
+            {
+                string msg = e.Message;
+                respuesta = false;
+            }
+            return respuesta;
+        }
     }
 }
