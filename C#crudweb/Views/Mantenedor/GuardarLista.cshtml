@@ -1,4 +1,4 @@
-﻿
+﻿@model ContactoModelo;
 @{
     ViewData["Title"] = "GuardarLista";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,21 +9,21 @@
         Crear Contacto
     </div>
     <div class="card-body">
-        <form>
+        <form asp-action="Guardar" asp-controller="Mantenedor" method="post">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" aria-describedby="NameHelp">
+                <input asp-for="Nombre" type="text" class="form-control" id="nombre" aria-describedby="NameHelp">
             </div>
             <div class="mb-3">
                 <label for="telefono" class="form-label">Teléfono:</label>
-                <input type="text" class="form-control" id="telefono">
+                <input  asp-for="Telefono" type="text" class="form-control" id="telefono">
             </div>            
             <div class="mb-3">
                 <label for="mail" class="form-label">Correo:</label>
-                <input type="email" class="form-control" id="mail">
+                <input asp-for="Correo"  type="email" class="form-control" id="mail">
             </div>
 
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
             <a href="#">Volver a la lista</a>
         </form>
     </div>
