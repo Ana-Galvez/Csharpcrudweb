@@ -13,14 +13,17 @@
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre:</label>
                 <input asp-for="Nombre" type="text" class="form-control" id="nombre" aria-describedby="NameHelp">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="telefono" class="form-label">Teléfono:</label>
                 <input  asp-for="Telefono" type="text" class="form-control" id="telefono">
+                <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>            
             <div class="mb-3">
                 <label for="mail" class="form-label">Correo:</label>
                 <input asp-for="Correo"  type="email" class="form-control" id="mail">
+                <span asp-validation-for="Correo" class="text-danger"></span>
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar</button>

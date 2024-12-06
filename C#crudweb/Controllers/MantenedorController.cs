@@ -19,6 +19,8 @@ namespace C_crudweb.Controllers
         }          
         public IActionResult Guardar(ContactoModelo objContacto)
         {
+            if (!ModelState.IsValid) return View();
+
             var respuesta = contactoDatos.GuardarContacto(objContacto);
             if (respuesta)
                 return RedirectToAction("Listar");
