@@ -19,6 +19,7 @@
                     <th>Nombre</th>
                     <th>Telefono</th>
                     <th>Correo</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                         <td>@item.Nombre</td>
                         <td>@item.Telefono</td>
                         <td>@item.Correo</td>
+                        <td><a asp-action="Editar" asp-controller="Mantenedor" asp-route-IdContacto="@item.IdContacto" class="btn btn-primary btn-sm">Editar</a></td>
                     </tr>
                 }
             </tbody>

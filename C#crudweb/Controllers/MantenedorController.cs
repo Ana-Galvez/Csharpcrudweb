@@ -26,11 +26,27 @@ namespace C_crudweb.Controllers
                 return RedirectToAction("Listar");
             else
                 return View();
-        }        
-        public IActionResult Modificar()
+        }
+
+        public IActionResult Modificar(int IdContacto)
         {
+            var objContacto = contactoDatos.ListarContacto(IdContacto);
             return View();
         }        
+        
+        [HttpPost]
+        public IActionResult Modificar(ContactoModelo objContacto)
+        {
+            if (!ModelState.IsValid) return View();
+
+            var respuesta = contactoDatos.EditarContacto(objContacto);
+
+            if (respuesta)
+                return RedirectToAction("Listar");
+            else
+                return View();
+        }
+
         public IActionResult Eliminar()
         {
             return View();
