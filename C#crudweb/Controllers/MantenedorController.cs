@@ -28,14 +28,14 @@ namespace C_crudweb.Controllers
                 return View();
         }
 
-        public IActionResult Modificar(int IdContacto)
+        public IActionResult Editar(int IdContacto)
         {
             var objContacto = contactoDatos.ListarContacto(IdContacto);
-            return View();
+            return View(objContacto);
         }        
         
         [HttpPost]
-        public IActionResult Modificar(ContactoModelo objContacto)
+        public IActionResult Editar(ContactoModelo objContacto)
         {
             if (!ModelState.IsValid) return View();
 
