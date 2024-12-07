@@ -35,7 +35,7 @@ namespace C_crudweb.Controllers
         }        
         
         [HttpPost]
-        public IActionResult Editar(ContactoModelo objContacto)
+        public IActionResult Modificar(ContactoModelo objContacto)
         {
             if (!ModelState.IsValid) return View();
 
