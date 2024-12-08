@@ -47,9 +47,21 @@ namespace C_crudweb.Controllers
                 return View();
         }
 
-        public IActionResult Eliminar()
+        public IActionResult Eliminar(int IdContacto)
         {
-            return View();
+            var objContacto = contactoDatos.ListarContacto(IdContacto);
+            return View(objContacto);
+        }
+
+        [HttpPost]
+        public IActionResult Eliminar(ContactoModelo objContacto)
+        {
+            var respuesta = contactoDatos.BorrarContacto(objContacto.IdContacto);
+
+            if (respuesta)
+                return RedirectToAction("Listar");
+            else
+                return View();
         }
     }
 }
